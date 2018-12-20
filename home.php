@@ -1,3 +1,8 @@
+<?php require('includes/config.php');
+
+require('layout/header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +40,7 @@
                 <li><a href="edit.php">Verwaltung</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Dein Account</a></li>
+                <li><a href="#"><?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); + " " ?><span class="glyphicon glyphicon-user"></span></a></li>
             </ul>
         </div>
     </div>
@@ -54,7 +59,7 @@
         <div class="panel-heading">sportkrass.mp4</div>
         <div class="panel-body">
             <video class="img-responsive" controls>
-                <source src="videos/1.mp4" type="video/mp4">
+                <source src="videos/Chestbounce.mov" type="video/mp4">
                 Din Browser isch blöd :(
             </video>
         </div>
