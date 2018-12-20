@@ -40,7 +40,14 @@ require('layout/header.php');
                 <li><a href="edit.php">Verwaltung</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); + " " ?><span class="glyphicon glyphicon-user"></span></a></li>
+                <li><a href="#"><?php if ($_SESSION['username'] != null) {
+                            echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); echo " ";
+                        }
+                        else {
+                            echo "Guest ";
+                        }
+                     ?>
+                        <span class="glyphicon glyphicon-user"></span></a></li>
             </ul>
         </div>
     </div>
