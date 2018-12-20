@@ -117,7 +117,7 @@ require('layout/header.php');
 	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 			<form role="form" method="post" action="" autocomplete="off">
 				<h2>Please Sign Up</h2>
-				<p>Already a member? <a href='login.php'>Login</a></p>
+				<p>Already a member? <a href='login.php'>Login</a></p> <p>Use as guest <a href="home.php">Guest</a></p>
 				<hr>
 
 				<?php
