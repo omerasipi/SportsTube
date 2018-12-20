@@ -8,8 +8,8 @@ date_default_timezone_set('Europe/London');
 
 
 //application address
-define('DIR','https://helalibo.ch/omer/clips/');
-define('SITEEMAIL','support@helalibo.ch');
+define('DIR','https://helalibo.com/');
+define('SITEEMAIL','info@helalibo.com');
 
 try {
 

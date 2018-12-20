@@ -3,13 +3,13 @@ include('phpmailer.php');
 class Mail extends PhpMailer
 {
     // Set default variables for all new objects
-    public $From     = 'support@helalibo.ch';
+    public $From     = 'info@helalibo.com';
     public $FromName = SITETITLE;
     public $Host     = 'asmtp.mail.hostpoint.ch';
     public $Mailer   = 'smtp';
     public $SMTPAuth = true;
-    public $Username = 'support@helalibo.ch';
-    public $Password = 'ExAAjNXn';
+    public $Username = 'info@helalibo.com';
+    public $Password = 'YBQVqAzA';
     public $SMTPSecure = 'tls';
     public $WordWrap = 75;
 
