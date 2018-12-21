@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="df54d312-1ab3-45f7-8362-c4801a70f506" name="helalibo.com" url="http://sl343.web.hostpoint.ch">
+      <webServer id="3b06ee7e-dde9-4434-aedf-8a69b12e1058" name="Helalibo.com" url="http://sl343.web.hostpoint.ch">
         <fileTransfer host="sl343.web.hostpoint.ch" port="21" accessType="FTPS">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

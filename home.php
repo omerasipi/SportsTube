@@ -40,7 +40,14 @@ require('layout/header.php');
                 <li><a href="edit.php">Verwaltung</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); + " " ?><span class="glyphicon glyphicon-user"></span></a></li>
+                <li><a href="#"><?php if ($_SESSION['username'] != null) {
+                            echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); echo " ";
+                        }
+                        else {
+                            echo "Guest ";
+                        }
+                     ?>
+                        <span class="glyphicon glyphicon-user"></span></a></li>
             </ul>
         </div>
     </div>
@@ -58,7 +65,7 @@ require('layout/header.php');
     <div class="panel panel-primary">
         <div class="panel-heading">sportkrass.mp4</div>
         <div class="panel-body">
-            <video class="img-responsive" controls>
+            <video class="img-responsive" controls preload="metadata">
                 <source src="videos/Chestbounce.mov" type="video/mp4">
                 Din Browser isch blöd :(
             </video>
@@ -74,7 +81,7 @@ require('layout/header.php');
     <div class="panel panel-primary">
         <div class="panel-heading">sportkrass.mp4</div>
         <div class="panel-body">
-            <video class="img-responsive" controls>
+            <video class="img-responsive" controls preload="metadata">
                 <source src="videos/2.mp4" type="video/mp4">
                 Din Browser isch blöd :(
             </video>
@@ -89,7 +96,25 @@ require('layout/header.php');
 <div class="col-sm-4">
     <div class="panel panel-primary">
         <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="videos/Chestbounce.mov" class="img-responsive"
+        <div class="panel-body">
+            <video class="img-responsive" controls preload="metadata">
+                <source src="videos/1.mp4" type="video/mp4">
+                Din Browser isch blöd :(
+            </video>
+        </div>
+        <div class="panel-footer">
+            <span class="badge badge-primary">Hochsprung</span>
+            <span class="badge badge-primary">1M</span>
+            <span class="badge badge-primary">Haha</span>
+        </div>
+    </div>
+</div>
+
+//not to be used
+<div class="col-sm-4">
+    <div class="panel panel-primary">
+        <div class="panel-heading">sportkrass.mp4</div>
+        <div class="panel-body"><img src="videos/1.mp4" class="img-responsive"
                                      alt="Image"></div>
         <div class="panel-footer">
             <span class="badge badge-primary">Hochsprung</span>
