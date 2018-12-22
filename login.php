@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
 
 		if($user->login($username,$password)){
 			$_SESSION['username'] = $username;
-			header('Location: home.php');
+			header('Location: homelogged.php');
 			exit;
 
 		} else {
