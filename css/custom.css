@@ -63,3 +63,8 @@ footer {
     background: #4CAF50;
     cursor: pointer;
 }
+.input {
+    width: 50%;
+    margin-left: auto;
+    margin-top: auto;
+}

@@ -111,28 +111,30 @@ require('layout/header.php');
 </nav>
 
 
-<div class="container">
+<div class="container" style="width: 30%">
     <form method="post" action="" enctype='multipart/form-data'>
         Picturename:<br>
-        <input type="text" name="firstname" value="name">
-        <br>
+        <input class="form-control" type="text" name="firstname" value="Name">
+        <br><br>
         First Tag:<br>
-        <input type="text" name="tag1" value="Tag">
+        <input type="text" class="form-control" name="tag1" value="Tag">
         <br><br>
         Second Tag:<br>
-        <input type="text" name="tag2" value="Tag">
+        <input type="text" class="form-control" name="tag2" value="Tag">
         <br><br>
         Third Tag:<br>
-        <input type="text" name="tag3" value="Tag">
+        <input type="text" class="form-control" name="tag3" value="Tag">
         <br><br>
-        <input type='file' name='file' />
+        <input type='file'  name='file' />
         <br>
-        <input type='submit' value='Upload' name='but_upload'>
+        <input type='submit'  value='Upload' name='but_upload'>
     </form>
+
+
+
+</body>
 
 <footer class="container-fluid text-center">
     <p>2018 © Patrik Studer & Omer Asipi</p>
 </footer>
-
-</body>
 </html>

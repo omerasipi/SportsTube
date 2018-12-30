@@ -81,7 +81,7 @@ include("configg.php");
 <br><br>
 
 <?php
-$fetchVideos = mysqli_query($con, "SELECT location, name, id,Bildname, Tag1, Tag2, Tag3 FROM videos ORDER BY id ASC");
+$fetchVideos = mysqli_query($con, "SELECT location, name, id, Bildname, Tag1, Tag2, Tag3 FROM videos ORDER BY id ASC");
 while($row = mysqli_fetch_assoc($fetchVideos)){
     $location = $row['location'];
     $name = $row['name'];
@@ -95,7 +95,7 @@ while($row = mysqli_fetch_assoc($fetchVideos)){
     echo "<div class=\"panel panel-primary\">\n";
     echo "<div class=\"panel-heading\">$name</div>\n";
     echo "<div class=\"panel-body\">\n";
-    echo "<video src='".$location."' id=\"vid$id\" controls class=\"img-responsive\" preload=\"metadata\"></video>\n";
+    echo "<video src='".$location."'  id=\"vid$id\" controls class=\"img-responsive\" preload=\"metadata\">";
     echo "
     <div class=\"row\">
                     <div class=\"col-xs-3 col-sm-3 col-md-3\">
