@@ -126,13 +126,6 @@ while($row = mysqli_fetch_assoc($fetchVideos)){
 }
 ?>
 </body>
-<br><br>
-
-<!--<input type="range" class="slider" min="0.1" max="2" step="0.01" value="1" id="range$id" onchange="slowMotion(this.id)">\n-->
-
-<footer class="container-fluid text-center">
-    <p>2018 © Patrik Studer & Omer Asipi</p>
-</footer>
 <script src="js/script.js"></script>
 </body>
 </html>
