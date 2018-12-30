@@ -2,6 +2,9 @@
 
 require('layout/header.php');
 ?>
+<?php
+include("configg.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,129 +40,65 @@ require('layout/header.php');
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php">Clips</a></li>
-                <li><a href="edit.php">Verwaltung</a></li>
+                <li><a href="edit.php">Upload</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <?php
+
+                if (isset($_GET['hello'])) {
+                    $user->logout();
+                    header('Location: index.php');
+                    exit;
+                }
+                ?>
+
+
+                <li><a href='homelogged.php?hello=true'>logout</a></li>
+
                 <li><a href="#"><?php if ($_SESSION['username'] != null) {
-                            echo htmlspecialchars($_SESSION['username'], ENT_QUOTES); echo " ";
+                            echo htmlspecialchars($_SESSION['username'], ENT_QUOTES);
+                            echo " ";
                         }
-                        else {
-                            echo "Guest ";
-                        }
+
                         ?>
                         <span class="glyphicon glyphicon-user"></span></a></li>
             </ul>
         </div>
     </div>
 </nav>
-
+<body>
 <div class="container">
-    <form class="form-inline">
-        <input type="email" class="form-control" size="50" placeholder="Tags">
-        <button type="button" class="btn btn-primary">Suchen</button>
-    </form>
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <form class="form-inline">
+                <input type="text" class="form-control" size="50" placeholder="Tags">
+                <button type="button" class="btn btn-primary">Suchen</button>
+            </form>
+        </div>
+
+
+</div>
 </div>
 <br><br>
 
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body">
-            <video class="img-responsive" controls preload="metadata">
-                <source src="videos/Chestbounce.mov" type="video/mp4">
-                Din Browser isch blöd :(
-            </video>
-        </div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body">
-            <video class="img-responsive" controls preload="metadata">
-                <source src="videos/2.mp4" type="video/mp4">
-                Din Browser isch blöd :(
-            </video>
-        </div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body">
-            <video class="img-responsive" controls preload="metadata">
-                <source src="videos/1.mp4" type="video/mp4">
-                Din Browser isch blöd :(
-            </video>
-        </div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
+<?php
+$fetchVideos = mysqli_query($con, "SELECT location, name FROM videos ORDER BY id DESC");
+while($row = mysqli_fetch_assoc($fetchVideos)){
+    $location = $row['location'];
+    $name = $row['name'];
 
-//not to be used
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="videos/1.mp4" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=VIDEO" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=VIDEO" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=VIDEO" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
+    echo "<div class=\"col-sm-4\">";
+    echo "<div class=\"panel panel-primary\">";
+    echo "<div class=\"panel-heading\">$name</div>";
+    echo "<div class=\"panel-body\">";
+    echo "<video src='".$location."' controls class=\"img-responsive\" >";
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
 
+}
+?>
+</body>
 <br><br>
 
 <footer class="container-fluid text-center">

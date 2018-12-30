@@ -1,3 +1,8 @@
+
+<?php require('includes/config.php');
+
+require('layout/header.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +14,45 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
+    <?php
+    include("configg.php");
+
+    if(isset($_POST['but_upload'])){
+        $maxsize = 100242880; // 5MB
+
+        $name = $_FILES['file']['name'];
+        $target_dir = "videos/";
+        $target_file = $target_dir . $_FILES["file"]["name"];
+
+        // Select file type
+        $videoFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        // Valid file extensions
+        $extensions_arr = array("mp4","avi","3gp","mov","mpeg");
+
+        // Check extension
+        if( in_array($videoFileType,$extensions_arr) ){
+
+            // Check file size
+            if(($_FILES['file']['size'] >= $maxsize) || ($_FILES["file"]["size"] == 0)) {
+                echo "File too large. File must be less than 5MB.";
+            }else{
+                // Upload
+                if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
+                    // Insert record
+                    $query = "INSERT INTO videos(name,location) VALUES('".$name."','".$target_file."')";
+
+                    mysqli_query($con,$query);
+                    echo "Upload successfully.";
+                }
+            }
+
+        }else{
+            echo "Invalid file extension.";
+        }
+
+    }
+    ?>
 </head>
 <body>
 
@@ -31,41 +75,39 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="home.php">Clips</a></li>
-                <li><a href="edit.php">Verwaltung</a></li>
+                <li><a href="homelogged.php">Clips</a></li>
+                <li  class="active"><a href="#">Upload</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Dein Account</a></li>
+                <?php
+
+                if (isset($_GET['hello'])) {
+                    $user->logout();
+                    header('Location: index.php');
+                    exit;
+                }
+                ?>
+
+
+                <li><a href='homelogged.php?hello=true'>logout</a></li>
+
+                <li><a href="#"><?php if ($_SESSION['username'] != null) {
+                            echo htmlspecialchars($_SESSION['username'], ENT_QUOTES);
+                            echo " ";
+                        }
+
+                        ?>
+                        <span class="glyphicon glyphicon-user"></span></a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container">
-<form>
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="validationDefault01">Video</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Tags</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
-        </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationDefaultUsername">Username</label>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                </div>
-                <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
-            </div>
-        </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
-</div>
-<br><br>
+    <form method="post" action="" enctype='multipart/form-data'>
+        <input type='file' name='file' />
+        <input type='submit' value='Upload' name='but_upload'>
+    </form>
 
 <footer class="container-fluid text-center">
     <p>2018 © Patrik Studer & Omer Asipi</p>

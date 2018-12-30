@@ -37,7 +37,6 @@ require('layout/header.php');
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php">Clips</a></li>
-                <li><a href="edit.php">Verwaltung</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><?php if ($_SESSION['username'] != null) {
