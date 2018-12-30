@@ -65,42 +65,11 @@ require('layout/header.php');
     <div class="panel panel-primary">
         <div class="panel-heading">sportkrass.mp4</div>
         <div class="panel-body">
-            <video class="img-responsive" controls preload="metadata">
+            <video class="img-responsive" id="vid1" controls preload="metadata">
                 <source src="videos/Chestbounce.mov" type="video/mp4">
                 Din Browser isch blöd :(
             </video>
-        </div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body">
-            <video class="img-responsive" controls preload="metadata">
-                <source src="videos/2.mp4" type="video/mp4">
-                Din Browser isch blöd :(
-            </video>
-        </div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body">
-            <video class="img-responsive" controls preload="metadata">
-                <source src="videos/1.mp4" type="video/mp4">
-                Din Browser isch blöd :(
-            </video>
+            <input type="range" min="0.1" max="2" step="0.01" value="1" id="range1" onchange="slowMotion(this.id)">
         </div>
         <div class="panel-footer">
             <span class="badge badge-primary">Hochsprung</span>
@@ -110,55 +79,6 @@ require('layout/header.php');
     </div>
 </div>
 
-//not to be used
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="videos/1.mp4" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=VIDEO" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=VIDEO" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
-<div class="col-sm-4">
-    <div class="panel panel-primary">
-        <div class="panel-heading">sportkrass.mp4</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=VIDEO" class="img-responsive"
-                                     alt="Image"></div>
-        <div class="panel-footer">
-            <span class="badge badge-primary">Hochsprung</span>
-            <span class="badge badge-primary">1M</span>
-            <span class="badge badge-primary">Haha</span>
-        </div>
-    </div>
-</div>
 
 <br><br>
 
@@ -166,5 +86,6 @@ require('layout/header.php');
     <p>2018 © Patrik Studer & Omer Asipi</p>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>

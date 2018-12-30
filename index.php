@@ -11,6 +11,7 @@ if(isset($_POST['submit'])){
     if (!isset($_POST['password'])) $error[] = "Please fill out all fields";
 
 	$username = $_POST['username'];
+    $memberType = $_POST['memberType'];
 
 	//very basic validation
 	if(!$user->isValidUsername($username)){
@@ -66,12 +67,13 @@ if(isset($_POST['submit'])){
 		try {
 
 			//insert into database with a prepared statement
-			$stmt = $db->prepare('INSERT INTO members (username,password,email,active) VALUES (:username, :password, :email, :active)');
+			$stmt = $db->prepare('INSERT INTO members (username,password,email,active,memberType) VALUES (:username, :password, :email, :active, :memberType)');
 			$stmt->execute(array(
 				':username' => $username,
 				':password' => $hashedpassword,
 				':email' => $email,
-				':active' => $activasion
+				':active' => $activasion,
+                ':memberType' => $memberType
 			));
 			$id = $db->lastInsertId('memberID');
 
@@ -152,7 +154,18 @@ require('layout/header.php');
 						</div>
 					</div>
 				</div>
-
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="radio" name="memberType" value="1">Lehrer
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="radio" name="memberType" value="2">Schüler
+                        </div>
+                    </div>
+                </div>
 				<div class="row">
 					<div class="col-xs-6 col-md-6"><input type="submit" name="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="5"></div>
 				</div>
