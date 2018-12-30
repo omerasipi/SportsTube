@@ -81,11 +81,15 @@ include("configg.php");
 <br><br>
 
 <?php
-$fetchVideos = mysqli_query($con, "SELECT location, name, id FROM videos ORDER BY id DESC");
+$fetchVideos = mysqli_query($con, "SELECT location, name, id,Bildname, Tag1, Tag2, Tag3 FROM videos ORDER BY id ASC");
 while($row = mysqli_fetch_assoc($fetchVideos)){
     $location = $row['location'];
     $name = $row['name'];
     $id = $row['id'];
+    $Bildname = $row['Bildname'];
+    $Tag1 = $row['Tag1'];
+    $Tag2 = $row['Tag2'];
+    $Tag3 = $row['Tag3'];
 
     echo "<div class=\"col-sm-4\">\n";
     echo "<div class=\"panel panel-primary\">\n";
@@ -111,6 +115,10 @@ while($row = mysqli_fetch_assoc($fetchVideos)){
                     </div>
     </div>";
     echo "</div>\n";
+    echo "<div class=\"panel-footer\">";
+    echo "<span class=\"badge badge-primary\">$Tag1</span>";
+    echo "<span class=\"badge badge-primary\">$Tag2</span>";
+    echo "<span class=\"badge badge-primary\">$Tag3</span>";
     echo "</div>\n";
     echo "</div>\n";
     echo "</div>\n";
