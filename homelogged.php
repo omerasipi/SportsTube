@@ -15,8 +15,7 @@ include("configg.php");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
 
@@ -82,28 +81,50 @@ include("configg.php");
 <br><br>
 
 <?php
-$fetchVideos = mysqli_query($con, "SELECT location, name FROM videos ORDER BY id DESC");
+$fetchVideos = mysqli_query($con, "SELECT location, name, id FROM videos ORDER BY id DESC");
 while($row = mysqli_fetch_assoc($fetchVideos)){
     $location = $row['location'];
     $name = $row['name'];
+    $id = $row['id'];
 
-    echo "<div class=\"col-sm-4\">";
-    echo "<div class=\"panel panel-primary\">";
-    echo "<div class=\"panel-heading\">$name</div>";
-    echo "<div class=\"panel-body\">";
-    echo "<video src='".$location."' controls class=\"img-responsive\" >";
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
+    echo "<div class=\"col-sm-4\">\n";
+    echo "<div class=\"panel panel-primary\">\n";
+    echo "<div class=\"panel-heading\">$name</div>\n";
+    echo "<div class=\"panel-body\">\n";
+    echo "<video src='".$location."' id=\"vid$id\" controls class=\"img-responsive\" preload=\"metadata\"></video>\n";
+    echo "
+    <div class=\"row\">
+                    <div class=\"col-xs-3 col-sm-3 col-md-3\">
+                        <div class=\"abstand\">
+                            Slow Motion
+                        </div>
+                    </div>
+                    <div class=\"col-xs-6 col-sm-6 col-md-6\">
+                        <div class=\"abstand\">
+                            <input type=\"range\" class=\"slider\" min=\"0.1\" max=\"2\" step=\"0.01\" value=\"1\" id=\"range$id\" onchange=\"slowMotion(this.id)\">\n
+                        </div>
+                    </div>
+                    <div class=\"col-xs-3 col-sm-3 col-md-3\">
+                        <div class=\"abstand\">
+                            Fast Motion
+                        </div>
+                    </div>
+    </div>";
+    echo "</div>\n";
+    echo "</div>\n";
+    echo "</div>\n";
+    echo "</div>\n";
 
 }
 ?>
 </body>
 <br><br>
 
+<!--<input type="range" class="slider" min="0.1" max="2" step="0.01" value="1" id="range$id" onchange="slowMotion(this.id)">\n-->
+
 <footer class="container-fluid text-center">
     <p>2018 © Patrik Studer & Omer Asipi</p>
 </footer>
-
+<script src="js/script.js"></script>
 </body>
 </html>
