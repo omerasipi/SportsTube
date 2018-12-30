@@ -14,15 +14,22 @@ require('layout/header.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
+
     <?php
     include("configg.php");
 
     if(isset($_POST['but_upload'])){
         $maxsize = 100242880; // 5MB
 
+
+
         $name = $_FILES['file']['name'];
         $target_dir = "videos/";
         $target_file = $target_dir . $_FILES["file"]["name"];
+        $picname = $_POST['firstname'];
+        $tag1 = $_POST['tag1'];
+        $tag2 = $_POST['tag2'];
+        $tag3 = $_POST['tag3'];
 
         // Select file type
         $videoFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -40,7 +47,7 @@ require('layout/header.php');
                 // Upload
                 if(move_uploaded_file($_FILES['file']['tmp_name'],$target_file)){
                     // Insert record
-                    $query = "INSERT INTO videos(name,location) VALUES('".$name."','".$target_file."')";
+                    $query = "INSERT INTO videos(name,location, Bildname, Tag1, Tag2, Tag3) VALUES('".$name."','".$target_file."','".$picname."','".$tag1."','".$tag2."','".$tag3."')";
 
                     mysqli_query($con,$query);
                     echo "Upload successfully.";
@@ -103,9 +110,23 @@ require('layout/header.php');
     </div>
 </nav>
 
+
 <div class="container">
     <form method="post" action="" enctype='multipart/form-data'>
+        Picturename:<br>
+        <input type="text" name="firstname" value="name">
+        <br>
+        First Tag:<br>
+        <input type="text" name="tag1" value="Tag">
+        <br><br>
+        Second Tag:<br>
+        <input type="text" name="tag2" value="Tag">
+        <br><br>
+        Third Tag:<br>
+        <input type="text" name="tag3" value="Tag">
+        <br><br>
         <input type='file' name='file' />
+        <br>
         <input type='submit' value='Upload' name='but_upload'>
     </form>
 
