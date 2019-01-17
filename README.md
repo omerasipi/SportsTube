@@ -2,7 +2,7 @@
 
 Diese Applikation kann verwendet werden, um Videoclips zu verwalten.
 
-## Getting Started
+## Tutorial
 
 Um diese Applikation zu nutzen müssen folgende Schritte unternommen werden.
 
