@@ -31,7 +31,7 @@ Mit folgenden Schritten kann diese Applikation installiert werden.
 ## Erstellt mit
 
 * [Bootstrap](https://getbootstrap.com/) - Bootstrap CSS
-* [Leaflet](https://daveismyname.blog/login-and-registration-system-with-php) - Login and Registration system with PHP
+* [Loginsystem](https://daveismyname.blog/login-and-registration-system-with-php) - Login and Registration system with PHP
 
 ## Versioning
 
